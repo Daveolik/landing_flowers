@@ -1,9 +1,10 @@
-const catalogItems = document.querySelectorAll('.catalog-item');
-       
+const countCatalog = () => {
+  const catalogItems = document.querySelectorAll('.catalog-item');
+
 let count = 1;
 
-const checkCount = countItem => {
-  const plusBtn = countItem.querySelector('.plus-btn'),
+catalogItems.forEach(countItem => {
+   const plusBtn = countItem.querySelector('.plus-btn'),
         minusBtn = countItem.querySelector('.minus-btn'),
         spanCalc = countItem.querySelector('.btns-calc-wrapper span'),
         sum = countItem.querySelector('.wrapper-info span'),
@@ -14,23 +15,21 @@ const checkCount = countItem => {
         checkboxes = calcWrapper.querySelectorAll('input[type="checkbox"]'),
         btnClose = countItem.querySelector('.icon-close');
  
-  const countPlus = () => {
+
+  plusBtn.addEventListener('click', () => {
     count++;
     spanCalc.textContent = count;
     sum.textContent  = `${(startCalcValue * count)} ₽`;
-  };
+  });
 
-  const countMinus = () => {
+  minusBtn.addEventListener('click', () => {
     if (count > 1) {
-        count--;
-        sum.textContent = `${parseFloat(sum.textContent) - startCalcValue} ₽`;
-    }
-    
-    spanCalc.textContent = count;
-  };
-
-  plusBtn.addEventListener('click', countPlus);
-  minusBtn.addEventListener('click', countMinus);
+      count--;
+      sum.textContent = `${parseFloat(sum.textContent) - startCalcValue} ₽`;
+  }
+  
+  spanCalc.textContent = count;
+  });
 
   btnBuy.addEventListener('click', () => {
     calcWrapper.style.cssText= `
@@ -61,6 +60,9 @@ const checkCount = countItem => {
        }
      });
   });
-};
 
-catalogItems.forEach(checkCount);
+});
+
+}
+
+countCatalog();
