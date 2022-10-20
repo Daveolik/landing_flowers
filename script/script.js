@@ -1,6 +1,10 @@
+// Выполнение скрипта после загрузки html-элементов
+window.addEventListener('DOMContentLoaded', () => {
+
+// "Модуль" калькулятор
 const countCatalog = () => {
   const catalogItems = document.querySelectorAll('.catalog-item');
-
+    
 let count = 1;
 
 catalogItems.forEach(countItem => {
@@ -10,10 +14,11 @@ catalogItems.forEach(countItem => {
         sum = countItem.querySelector('.wrapper-info span'),
         startCalcValue = parseFloat(sum.textContent),
         btnBuy = countItem.querySelector('.btns-wrapper > button'),
-        calcWrapper = countItem.querySelector('.wrapper-calc-form'),
+        calcWrapper = countItem.querySelector('.wrapper-calc-div'),
         total = calcWrapper.querySelector('.total span'),
         checkboxes = calcWrapper.querySelectorAll('input[type="checkbox"]'),
-        btnClose = countItem.querySelector('.icon-close');
+        btnClose = countItem.querySelector('.wrapper-close'),
+        btnOrder = countItem.querySelector('.calc-div > button');
  
 
   plusBtn.addEventListener('click', () => {
@@ -53,16 +58,34 @@ catalogItems.forEach(countItem => {
 
   btnClose.addEventListener('click', () => {
     calcWrapper.style.display = 'none';
-
-    checkboxes.forEach(checkbox => {
-       if (checkbox.checked) {
-          checkbox.checked = false;
-       }
-     });
   });
-
+ 
+  btnOrder.addEventListener('click', () => {
+    window.location.href = '../order.html';
+  });
 });
 
 }
 
-countCatalog();
+  countCatalog();
+ 
+  const eventListeners = () => {
+    document.querySelector('.main .fill-btn').addEventListener('click', () => {
+    window.location.href = '../order_dop.html';
+  });
+
+  document.querySelector('.main .stroke-btn').addEventListener('click', () => {
+    document.querySelector('.main .popup-call').style.cssText= `
+      display:flex;
+      flex-direction: column;
+      `;
+  }); 
+ 
+  document.querySelector('.main .wrapper-close').addEventListener('click', () => {
+    document.querySelector('.main .popup-call').style.display = 'none';
+  });
+};
+  
+  eventListeners();
+
+});
