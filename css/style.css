@@ -130,6 +130,10 @@ section h1 {
   line-height: 1.5;
 }
 
+.offer {
+  position: relative;
+}
+
 .offer .btns {
   margin-top: 60px;
 }
@@ -204,7 +208,6 @@ section h1 {
   height: 18px;
 }
 
-
 .catalog h1 {
   margin-bottom: 0;
 }
@@ -216,14 +219,25 @@ section h1 {
   position: relative;
 }
 
-.catalog .wrapper-calc-form {
+.catalog .wrapper-calc-div,
+.main .popup-call {
   position: absolute;
-  width: 500px;
-  height: 400px;
   background: #fff;
   border: 5px solid #fcfc6f;
   display: none;
+}
+
+.catalog .wrapper-calc-div {
+  width: 500px;
+  height: 400px;
   padding: 40px;
+}
+
+.main .popup-call {
+  width: 350px;
+  height: 350px;
+  top: -50px;
+  left: 10%;
 }
 
 .catalog-item {
@@ -266,7 +280,7 @@ section h1 {
   background: #F5749B;
 }
 
-.catalog .wrapper-calc-form .btn {
+.catalog .wrapper-calc-div .btn {
   width: 200px;
   height: 45px;
   padding: 10px;
@@ -298,9 +312,13 @@ section h1 {
   font-weight: bold;
 }
 
-.catalog .wrapper-calc-form h2 {
+.catalog .calc-div {
+  margin-top: 20px;
+}
+
+.catalog .wrapper-calc-div h2,
+.main .popup-call h2 {
   font-size: 18px;
-  margin-bottom: 20px;
   color: #393E46;
 }
 
@@ -310,19 +328,41 @@ section h1 {
   margin-top: 30px;
 }
 
-.catalog .wrapper-header {
+.catalog .wrapper-header,
+.main .wrapper-header {
   display: flex;
+  align-items: center;
+}
+
+.main .wrapper-header {
+  margin-top: 30px;
+  justify-content: center;
+  align-items: center;
 }
 
 .catalog .wrapper-close {
   margin-left: auto;
 }
 
-.catalog .wrapper-calc-form .icon-close {
+.main .wrapper-close {
+  position: absolute;
+  right: 30px;
+}
+
+.catalog .wrapper-calc-div .icon-close,
+.main .popup-call .icon-close {
   fill: #4A4F57;
   opacity: 50%;
+}
+
+.catalog .wrapper-calc-div .icon-close {
   width: 20px;
   height: 20px;
+}
+
+.main .popup-call .icon-close {
+  width: 15px;
+  height: 15px;
 }
 
 .catalog .wrapper-inputs {
@@ -330,20 +370,20 @@ section h1 {
   flex-direction: column;
 }
 
-.catalog .calc-form input[type="checkbox"] {
+.catalog .calc-div input[type="checkbox"] {
   position: absolute;
   z-index: -1;
   opacity: 0;
 }
 
-.catalog .calc-form input[type="checkbox"]+label {
+.catalog .calc-div input[type="checkbox"]+label {
   display: flex;
   align-items: center;
   user-select: none;
   font-size: 14px;
 }
 
-.catalog .calc-form input[type="checkbox"]+label::before {
+.catalog .calc-div input[type="checkbox"]+label::before {
   content: '';
   border: 1px solid #393E46;
   border-radius: 3px;
@@ -360,12 +400,12 @@ section h1 {
   background-position: center center;
 }
 
-.catalog .calc-form input[type="checkbox"]:checked+label::before {
+.catalog .calc-div input[type="checkbox"]:checked+label::before {
   background-color: #393E46;
   background-image: url("data: image/svg+xml, %3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg' %3E %3Cpath d='M12.736 3.97C12.8043 3.90037 12.8857 3.84505 12.9756 3.80728C13.0655 3.76952 13.162 3.75007 13.2595 3.75007C13.357 3.75007 13.4535 3.76952 13.5434 3.80728C13.6333 3.84505 13.7148 3.90037 13.783 3.97C14.069 4.259 14.073 4.726 13.793 5.02L7.88001 12.01C7.81288 12.0837 7.73141 12.143 7.64059 12.1841C7.54977 12.2253 7.45151 12.2475 7.35182 12.2493C7.25213 12.2512 7.1531 12.2327 7.0608 12.195C6.9685 12.1573 6.88487 12.1011 6.81501 12.03L3.21701 8.384C3.07825 8.24249 3.00052 8.0522 3.00052 7.854C3.00052 7.6558 3.07825 7.46551 3.21701 7.324C3.28526 7.25437 3.36671 7.19905 3.4566 7.16128C3.54649 7.12352 3.64301 7.10407 3.74051 7.10407C3.83801 7.10407 3.93453 7.12352 4.02442 7.16128C4.11431 7.19905 4.19576 7.25437 4.26401 7.324L7.31601 10.417L12.716 3.992C12.7222 3.98427 12.7289 3.97692 12.736 3.97Z' fill='white' /%3E %3C/svg%3E");
 }
 
-.catalog .calc-form input[type="checkbox"]+label:not(:last-child) {
+.catalog .calc-div input[type="checkbox"]+label:not(:last-child) {
   margin-bottom: 8px;
 }
 
@@ -410,6 +450,10 @@ section h1 {
 
 .blocks-container.contacts {
   padding: 120px 30px 120px 30px;
+}
+
+.blocks-container.order {
+  padding: 60px 30px 0 30px;
 }
 
 .contact-block {
@@ -563,4 +607,65 @@ footer .stroke-btn {
 footer .stroke-btn:hover {
   background: #393E46;
   color: #fff;
+}
+
+.order .form-wrapper,
+.main .form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.order .form-wrapper {
+  margin-top: 40px;
+}
+
+.order form,
+.main form {
+  display: flex;
+  flex-direction: column;
+}
+
+.order form input[type="text"],
+.main form input[type="text"] {
+  border-radius: 3px;
+  border: 1px solid #393E46;
+  width: 200px;
+  padding: 10px;
+  font-size: 12px;
+  color: #393E46;
+}
+
+.order form input[type="text"]:not(:nth-child(3)) {
+  margin-bottom: 20px;
+}
+
+.main form input[type="text"]:not(:nth-child(2)) {
+ margin-bottom: 20px;
+}
+
+.order form input::placeholder,
+.main form input::placeholder {
+  font-size: 12px;
+}
+
+.order form button,
+.main form button {
+  width: 200px;
+  padding: 10px;
+  margin-top: 30px;
+  font-size: 12px;
+}
+
+.main .form-wrapper {
+  margin-top: 35px;
+}
+
+.order p {
+  text-align: center;
+  font-size: 15px;
+}
+
+.order h1 {
+  margin-bottom: 8px;
+  line-height: 1.1;
 }
